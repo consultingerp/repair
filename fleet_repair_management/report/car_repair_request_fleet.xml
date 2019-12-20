@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <report
+            id="print_support_request_car_fleet"
+            model="fleet.repair"
+            report_type="qweb-pdf"
+            string="Print Car Repair Request"
+            name="fleet_repair_management.support_report_car_fleet"
+            file="fleet_repair_management.support_report_car_fleet"
+         />
+         
+        <template id="support_report_car_fleet">
+             <t t-foreach="docs" t-as="doc">
+              <t t-call="web.html_container">
+               <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="text-left">
+                         <h3>
+                            <strong><span t-field="doc.name"/> [<span t-field="doc.state"/>]</strong>
+                         </h3>
+                    </div>
+                    <h4 style="margin-top:20px;"><b>Client Information</b></h4>
+                    <table class="table" style="border:1px solid #e1e1e1;">
+                       <tr style="border-bottom:hidden;">
+                           <td><strong>Techniseal</strong></td><td><span t-field="doc.user_id"/></td>
+                           <td><strong>Client</strong></td><td><span t-field="doc.client_id"/></td>
+                           
+                       </tr>
+                       <tr style="border-bottom:hidden;">
+                           <td><strong>Email</strong></td><td><span t-field="doc.client_email"/></td>
+                           <td><strong>Phone</strong></td><td><span t-field="doc.client_phone"/></td>
+                       </tr>
+                       <tr>
+                           <td><strong>Company</strong></td><td><span t-field="doc.company_id"/></td>
+                           <td><strong></strong></td><td></td>
+                       </tr>
+                    </table>
+                    <h4 style="margin-top:20px;"><b>Car Information</b></h4>
+                    <table class="table" style="border:1px solid #e1e1e1;">
+                       <tr style="border-bottom:hidden;">
+                           <th>Fleet</th>
+                           <th>License Plate</th>
+                           <th>Model</th>
+                           <th>Chassis Number</th>
+                           <th>Fuel Type</th>
+                           <th>Under Guarantee?</th>
+                           <th>Nature of Service</th>
+                       </tr>
+                        <t t-if="docs.fleet_repair_line">
+                            <t t-foreach="docs.fleet_repair_line" t-as="docss">
+                                <tr style="border-bottom:hidden;">
+                                    <td><span t-field="docss.fleet_id"/></td>
+                                    <td><span t-field="docss.license_plate"/></td>
+                                    <td><span t-field="docss.model_id"/></td>
+                                    <td><span t-field="docss.vin_sn"/></td>
+                                    <td><span t-field="docss.fuel_type"/></td>
+                                    <td><span t-field="docss.guarantee"/></td>
+                                    <td><span t-field="docss.service_type"/></td>
+                                </tr>
+                            </t>
+                        </t>
+                    </table>
+                    <h4 style="margin-top:20px;"><b>Other Information</b></h4>
+                    <table class="table"  style="border:1px solid #e1e1e1;">
+                       <tr style="border: 2px ">
+                            <td><strong>Name</strong></td><td><span t-field="doc.name"/></td>
+                           <td><strong>Receipt Date</strong></td><td><span t-field="doc.receipt_date"/></td>
+                       </tr>
+                       <tr style="border: 2px ">
+                           <td><strong>Is Repaied ?</strong></td><td><span t-field="doc.is_close"/></td>
+                            <td><strong>Priority</strong></td><td><span t-field="doc.priority"/></td>
+                       </tr>
+                    </table>
+                    <div  style="page-break-after:always">
+                        <p><h4>Description</h4><span t-field="doc.description"/></p>
+                    </div>
+                </div>
+              </t>
+            </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
