@@ -26,7 +26,7 @@ class fleet_diagnose(models.Model):
     model_id = fields.Many2one('fleet.vehicle.model', 'Model', help='Model of the vehicle')
     fuel_type = fields.Selection([('gasoline', 'Gasoline'), ('diesel', 'Diesel'), ('electric', 'Electric'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle')
     service_type = fields.Many2one('service.type', string='Nature of Service')
-    user_id = fields.Many2one('res.users', string='Technician')
+    user_id = fields.Char(comodel_name = 'res.users', string='Technicians')
     priority = fields.Selection([('0', 'Low'), ('1', 'Normal'), ('2', 'High')], 'Priority')
     description = fields.Text(string='Fault Description')
     spare_part_ids = fields.Many2many('spare.part.line', 'diagnose_id', string='Spare Parts Needed')
@@ -561,7 +561,37 @@ class fleet_diagnose(models.Model):
         result['res_id'] = order_id.id or False
         self.write({'sale_order_id': order_id.id, 'state': 'done'})
         return result
-        
+
+    @api.multi
+    def assign_to_technician(self):
+
+      technician = []
+
+      if self.spare_part_ids_y:
+
+          print(self.spare_part_ids_y)
+
+          for line in self.spare_part_ids_y:
+
+              if line.user_id:
+                  if line.user_id.name not in technician:
+
+                      technician.append(line.user_id.name)
+              else:
+
+                  raise UserError("No puede asignar la mano de obra sin un técnico asociado")
+
+
+
+          self.user_id = str(technician)
+          self.state = 'in_progress'
+
+          print(technician)
+
+      else:
+
+          raise UserError("No puede asignar técnicos, la mano de obra no ha sido registrada")
+
 
     @api.multi
     def action_view_sale_order(self):
@@ -603,7 +633,8 @@ class spare_part_line(models.Model):
     diagnose_id_y = fields.Many2one('fleet.diagnose', string='fleet Diagnoses') #ggg
     workorder_id = fields.Many2one('fleet.workorder', string='fleet Workorder')
     fleet_id = fields.Many2one('fleet.repair.line', string='Fleet')
-        
+    user_id = fields.Many2one('res.users', string='Technician')
+
     
     @api.onchange('product_id')
     def onchange_product_id(self):

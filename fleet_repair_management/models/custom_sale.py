@@ -42,38 +42,52 @@ class SaleOrder(models.Model):
         order.state = 'sale'
         fleet_line_obj = self.env['fleet.repair.line']
         if  order.diagnose_id:
-            wo_vals = {
-                    'name': order.diagnose_id.name,
-                    'client_id': order.diagnose_id.client_id.id,
-                    'sale_order_id': order.id,
-                    'fleet_repair_id': order.diagnose_id.fleet_repair_id.id,
-                    'diagnose_id': order.diagnose_id.id,
-                    'hour': sum((line.est_ser_hour for line in order.diagnose_id.fleet_repair_line), 0.0),
-                    'priority': order.diagnose_id.priority,
-                    'state': 'draft',
-                    'user_id': order.diagnose_id.user_id.id,
-                    'confirm_sale_order' : True,
-                }
-            wo_id = self.env['fleet.workorder'].create(wo_vals)
-            for line in order.diagnose_id.fleet_repair_line:
-                fleet_line_vals = {
-                        'workorder_id': wo_id,
-                    }
-                line.write({'workorder_id':wo_id.id})
-                fleet_line_obj.write({'fleet_repair_line': line.id})
-            diag_id = order.diagnose_id.id
-            diagnose_obj = self.env['fleet.diagnose'].browse(diag_id)
-            diagnose_obj.is_workorder_created = True
-            diagnose_obj.confirm_sale_order = True
 
-            if diagnose_obj.fleet_repair_id:
-                repair_id = [diagnose_obj.fleet_repair_id.id]
-                browse_record = self.env['fleet.repair'].browse(repair_id)
-                browse_record.state= 'saleorder'
-                browse_record.workorder_id = wo_id.id
-                browse_record.confirm_sale_order = True 
-            self.write({'workorder_id': wo_id.id, 'fleet_repair_id':diagnose_obj.fleet_repair_id.id, 'is_workorder_created':True})
-            res = super(SaleOrder, self).action_confirm()
+
+            list = order.diagnose_id.user_id
+
+            list = list.strip('][').split(', ')
+
+            for elements in list:
+
+                user = self.env['res.users'].search([('name', '=', elements.strip('\''))])
+
+                print(user.id)
+
+
+                wo_vals = {
+                        'name': order.diagnose_id.name,
+                        'client_id': order.diagnose_id.client_id.id,
+                        'sale_order_id': order.id,
+                        'fleet_repair_id': order.diagnose_id.fleet_repair_id.id,
+                        'diagnose_id': order.diagnose_id.id,
+                        'hour': sum((line.est_ser_hour for line in order.diagnose_id.fleet_repair_line), 0.0),
+                        'priority': order.diagnose_id.priority,
+                        'state': 'draft',
+                        'user_id': user.id,
+                        'confirm_sale_order' : True,
+                    }
+                wo_id = self.env['fleet.workorder'].create(wo_vals)
+                for line in order.diagnose_id.fleet_repair_line:
+                    fleet_line_vals = {
+                            'workorder_id': wo_id,
+                        }
+                    line.write({'workorder_id':wo_id.id})
+                    fleet_line_obj.write({'fleet_repair_line': line.id})
+                diag_id = order.diagnose_id.id
+                diagnose_obj = self.env['fleet.diagnose'].browse(diag_id)
+                diagnose_obj.is_workorder_created = True
+                diagnose_obj.confirm_sale_order = True
+
+                if diagnose_obj.fleet_repair_id:
+                    repair_id = [diagnose_obj.fleet_repair_id.id]
+                    browse_record = self.env['fleet.repair'].browse(repair_id)
+                    browse_record.state= 'saleorder'
+                    browse_record.workorder_id = wo_id.id
+                    browse_record.confirm_sale_order = True
+                self.write({'workorder_id': wo_id.id, 'fleet_repair_id':diagnose_obj.fleet_repair_id.id, 'is_workorder_created':True})
+
+        res = super(SaleOrder, self).action_confirm()
         return res
 
 

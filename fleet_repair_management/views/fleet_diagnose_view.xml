@@ -10,7 +10,7 @@
                 <form string="Fleet Diagnosis">
                     <header>
                         <button name="action_create_quotation" string="Create Quotation" type="object" class="oe_highlight" style="float:left;" states="in_progress"/>
-                        <button name="%(action_fleet_diagnose_assign_to_technician)d" string="Assign to Technician" states="draft" type="action" class="oe_highlight" style="float:left;" groups="fleet_repair_management.group_fleet_repair_head_technician,fleet_repair_management.group_fleet_repair_directeur_commercial"/>
+                        <button name="assign_to_technician" string="Assign to Technician" states="draft" type="object" class="oe_highlight" style="float:left;" groups="fleet_repair_management.group_fleet_repair_head_technician,fleet_repair_management.group_fleet_repair_directeur_commercial"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
                     </header>
                     <sheet string="Fleet Diagnosis">
@@ -245,6 +245,7 @@
                                             <field name="default_code"/>
                                             <field name="quantity"/>
                                             <field name="price_unit"/>
+                                            <field name ="user_id" />
                                         </tree>
                                     </field>
                                 </group>
