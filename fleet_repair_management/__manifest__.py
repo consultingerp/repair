@@ -45,6 +45,7 @@ You can choose one more invoicing method here: auto workshop repair , automobile
             'datas/mail_template_ticket.xml',
             'views/feedback.xml',
             'views/thankyou.xml',
+            'views/sale_order_line.xml',
             'report/invoice_report.xml',
             'report/sale_order_report.xml',
             'report/fleet_repair_label_view.xml',
@@ -63,7 +64,7 @@ You can choose one more invoicing method here: auto workshop repair , automobile
     'qweb':[ ],
     "auto_install": False,
     "installable": True,
-    "images":['static/description/Banner.png'],
+    "images":['static/description/Banner.png', 'static/description/icon.png'],
     'live_test_url':'https://youtu.be/CQwzWEJZuAU',
 }
 

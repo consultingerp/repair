@@ -186,6 +186,19 @@ class fleet_workorder(models.Model):
         if self.sale_order_id:
             self.sale_order_id.write({'state': 'sale'})
         if self.fleet_repair_id:
-            self.fleet_repair_id.write({'state': 'work_completed'})
+
+            work_order = self.env['fleet.workorder'].search([('fleet_repair_id', '=', self.fleet_repair_id.id)])
+
+            count = 0
+
+            for work in work_order:
+
+                if work.state == 'done':
+                    count += 1
+                print ("***********%r" % work.id)
+
+            if count == len(work_order):
+                self.fleet_repair_id.write({'state': 'work_completed'})
+
         return True
 

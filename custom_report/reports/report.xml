@@ -1,0 +1,825 @@
+<odoo>
+   <record model="report.paperformat" id="paperformat_account_state_report">
+      <field name="name">paperformat.asset.analyze.report</field>
+      <field name="default" eval="True"/>
+      <field name="format">A4</field>
+      <field name="page_width">0</field>
+      <field name="page_width">0</field>
+      <field name="orientation">Landscape</field>
+      <field name="margin_top">35</field>
+      <field name="margin_right">5</field>
+      <field name="margin_bottom">15</field>
+      <field name="margin_left">5</field>
+      <field name="header_line" eval="False"/>
+      <field name="header_spacing">30</field>
+      <field name="dpi">90</field>
+   </record>
+
+
+ <report id = "report_custom"
+string = "Hoja de Diagnostico"
+model ="fleet.diagnose"
+report_type = "qweb-pdf" name="custom_report.report_custom_template"/>
+
+
+   <template id = "report_custom_template">
+
+ <t t-foreach="docs" t-as="o">
+<t t-call="web.html_container">
+ <t t-call="web.external_layout">
+
+
+   <div class = "page">
+      <div class="row">
+      <div class="col-xs-5">
+                                <table>
+                                    <tr>
+                                        <td style="width: 100%; height: 22px; padding-left:10px;">
+                                            <b><span>Direccion</span></b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;padding-left:10px;">
+                                            <span t-field="o.client_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;padding-left:10px;">
+                                            <span t-field="o.client_id.street"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;padding-left:10px;">
+                                            <span t-field="o.client_id.street2"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;padding-left:10px;">
+                                            <div style="width: 100%">
+                                                <span style="width: 40%" t-field="o.client_id.city"/>,
+                                                <span style="width: 20%" t-field="o.client_id.state_id.code"/>,
+                                                <span style="width: 40%" t-field="o.client_id.zip"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;padding-left:10px;">
+                                            <span t-field="o.client_id.country_id"/>
+                                        </td>
+                                    </tr>
+                                    <tr t-if="o.fleet_repair_id.client_phone">
+                                        <td style="width: 100%;padding-left:10px;">
+                                            <span style="font-weight: bold;">Telefono:</span>
+                                            <span t-field="o.fleet_repair_id.client_phone"/>
+                                        </td>
+                                    </tr>
+                                    <tr t-if="o.fleet_repair_id.phone">
+                                        <td style="width: 100%;padding-left:10px;">
+                                            <span style="font-weight: bold;">Contact Number:</span>
+                                            <span t-field="o.fleet_repair_id.phone"/>
+                                        </td>
+                                    </tr>
+                                    <tr t-if="o.fleet_repair_id.client_mobile">
+                                        <td style="width: 100%;padding-left:10px;">
+                                            <span style="font-weight: bold;">Celular:</span>
+                                            <span t-field="o.fleet_repair_id.client_mobile"/>
+                                        </td>
+                                    </tr>
+                                    <tr t-if="o.fleet_repair_id.client_email">
+                                        <td style="width: 100%;padding-left:10px;">
+                                            <span style="font-weight: bold;">Correo:</span>
+                                            <span t-field="o.fleet_repair_id.client_email"/>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+
+                            <div class="col-xs-3">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="padding-left:10px; height: 22px; padding-top: 5px;">
+                                            <strong>Nombre de Contacto</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left:10px; text-align: left;">
+                                            <span t-field="o.client_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-left:10px;">
+                                            <strong>Tel: </strong>
+                                            <span t-field="o.client_id.mobile"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        
+
+                            </div>
+
+
+          <h3 class="text-center" t-foreach="o.fleet_repair_line" t-as="line" style="margin-top: 10px;" >DIAGNÓSTICO <span t-if="line.fleet_id" t-field="line.fleet_id.name"/>        </h3>
+           <h3><span t-if="o.fleet_id" t-field="o.fleet_id.name"></span></h3>
+
+          
+            
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white">
+                     <tr>
+                        <th class="text-center" style="width: 50%">Llantas</th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr>
+                           <td align="center">Delantera Izquierda</td>
+                           <td align="center">
+                              <span t-esc="doc['llanta_delantera_izquierda']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Delantera Derecha</td>
+                           <td align="center">
+                              <span t-esc="doc['llanta_delantera_derecha']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Trasera Izquierda</td>
+                           <td align="center">
+                              <span t-esc="doc['llanta_trasera_izquierda']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Trasera Derecha</td>
+                           <td align="center">
+                              <span t-esc="doc['llanta_trasera_derecha']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white">
+                     <tr>
+                        <th class="text-center" style="width: 50%">Alineación y Balanceo</th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr>
+                           <td align="center">Alineación</td>
+                           <td align="center">
+                              <span t-esc="doc['alineacion']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Perno Ajuste</td>
+                           <td align="center">
+                              <span t-esc="doc['perno_ajuste']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Balanceo</td>
+                           <td align="center">
+                              <span t-esc="doc['balanceo']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Rotación</td>
+                           <td align="center">
+                              <span t-esc="doc['rotacion']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white">
+                     <tr>
+                        <th class="text-center" style="width: 50%">Aire Acondicionado</th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr>
+                           <td align="center">Filtro cabina</td>
+                           <td align="center">
+                              <span t-esc="doc['filtro_cabina']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">MTTO general</td>
+                           <td align="center">
+                              <span t-esc="doc['mtto_general']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Compresor</td>
+                           <td align="center">
+                              <span t-esc="doc['compresor']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Evaporador</td>
+                           <td align="center">
+                              <span t-esc="doc['evaporador']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white">
+                     <tr>
+                        <th class="text-center" style="width: 50%">Nivel de fluidos </th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr>
+                           <td align="center">Refrigerante</td>
+                           <td align="center">
+                              <span t-esc="doc['refrigerante']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Aceite de motor</td>
+                           <td align="center">
+                              <span t-esc="doc['aceite_motor']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Aceite hidráulico</td>
+                           <td align="center">
+                              <span t-esc="doc['aciete_hidraulico']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Líquido limpia parabrisas</td>
+                           <td align="center">
+                              <span t-esc="doc['liquido_limpia_parabrisas']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white">
+                     <tr>
+                        <th class="text-center" style="width: 50%">Frenos delanteros </th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr>
+                           <td align="center">Pastillas de frenos</td>
+                           <td align="center">
+                              <span t-esc="doc['pastillas_frenos']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Discos de frenos</td>
+                           <td align="center">
+                              <span t-esc="doc['discos_frenos']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Bombillos de frenos</td>
+                           <td align="center">
+                              <span t-esc="doc['bombillos_frenos']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Campanas frenos</td>
+                           <td align="center">
+                              <span t-esc="doc['campanas_frenos']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Limpieza/Ajuste</td>
+                           <td align="center">
+                              <span t-esc="doc['limpieza_ajuste']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white">
+                     <tr>
+                        <th class="text-center" style="width: 50%">Frenos traseros</th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr>
+                           <td align="center">Fricciones</td>
+                           <td align="center">
+                              <span t-esc="doc['fricciones']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Discos de frenos</td>
+                           <td align="center">
+                              <span t-esc="doc['discos_frenos_tra']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Bombillos de frenos</td>
+                           <td align="center">
+                              <span t-esc="doc['bombillos_frenos_tra']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Campanas frenos</td>
+                           <td align="center">
+                              <span t-esc="doc['campanas_frenos_tra']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Limpieza/Ajuste</td>
+                           <td align="center">
+                              <span t-esc="doc['limpieza_ajuste']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white" >
+                     <tr>
+                        <th class="text-center" style="width: 50%">Sistema eléctrico</th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr>
+                           <td align="center">Motor de arranque</td>
+                           <td align="center">
+                              <span t-esc="doc['motor_arranque']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Alternador</td>
+                           <td align="center">
+                              <span t-esc="doc['alternador']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Régimen de carga</td>
+                           <td align="center">
+                              <span t-esc="doc['regimen_carga']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Luces</td>
+                           <td align="center">
+                              <span t-esc="doc['luces']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Terminales Sat</td>
+                           <td align="center">
+                              <span t-esc="doc['terminales_sat']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Batería</td>
+                           <td align="center">
+                              <span t-esc="doc['bateria']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white">
+                     <tr>
+                        <th class="text-center" style="width: 50%">Dirección</th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr>
+                           <td align="center">Terminales</td>
+                           <td align="center">
+                              <span t-esc="doc['terminales']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Brazos de cremallera</td>
+                           <td align="center">
+                              <span t-esc="doc['brazos_cremallera']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Cremallera</td>
+                           <td align="center">
+                              <span t-esc="doc['cremallera']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Caja/Bomba Hidráulica</td>
+                           <td align="center">
+                              <span t-esc="doc['caja_bomba_hidraulica']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Bujes columna direcc</td>
+                           <td align="center">
+                              <span t-esc="doc['bujes_columna_direcc']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Cruz cardanca</td>
+                           <td align="center">
+                              <span t-esc="doc['cruz_cardanca']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white" >
+                     <tr>
+                        <th class="text-center" style="width: 50%">Carrocería y chasis</th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr>
+                           <td align="center">Lavado de chasis</td>
+                           <td align="center">
+                              <span t-esc="doc['lavado_chasis']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Esprayado</td>
+                           <td align="center">
+                              <span t-esc="doc['esprayado']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Lavado de motor</td>
+                           <td align="center">
+                              <span t-esc="doc['lavado_motor']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Engrase</td>
+                           <td align="center">
+                              <span t-esc="doc['engrase']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Pasteado</td>
+                           <td align="center">
+                              <span t-esc="doc['pasteado']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Pulido de carrocería</td>
+                           <td align="center">
+                              <span t-esc="doc['pulido_carroceria']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Pulido de focos</td>
+                           <td align="center">
+                              <span t-esc="doc['pulido_focos']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white" >
+                     <tr>
+                        <th class="text-center" style="width: 50%">Suspensión</th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr style="height:0px;">
+                           <td align="center">Amortig y soporte del</td>
+                           <td align="center">
+                              <span t-esc="doc['amortig_soporte_del']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Amortig y soporte tras</td>
+                           <td align="center">
+                              <span t-esc="doc['amortig_soporte_tras']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Torre y/o bujes</td>
+                           <td align="center">
+                              <span t-esc="doc['torre_bujes']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Bujes de tijera sup. e inf</td>
+                           <td align="center">
+                              <span t-esc="doc['bujes_tijera_sup_inf']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Rotulas superiores</td>
+                           <td align="center">
+                              <span t-esc="doc['rotulas_superiores']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Bujes barra estabil</td>
+                           <td align="center">
+                              <span t-esc="doc['bujes_barra_estabil']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Bujes barra control</td>
+                           <td align="center">
+                              <span t-esc="doc['bujes_barra_control']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Bielas de suspension</td>
+                           <td align="center">
+                              <span t-esc="doc['bielas_suspension']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Barra de torsión</td>
+                           <td align="center">
+                              <span t-esc="doc['barra_torsion']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white">
+                     <tr>
+                        <th class="text-center" style="width: 50%">Rodamiento</th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr style="height:0px;">
+                           <td align="center">Balineras patente Del Der</td>
+                           <td align="center">
+                              <span t-esc="doc['balineras_patente_der']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Balineras patente Del Izq</td>
+                           <td align="center">
+                              <span t-esc="doc['balineras_patente_izr']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Balineras patente Tras Der</td>
+                           <td align="center">
+                              <span t-esc="doc['balineras_patente_tras_izq']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Balineras patente Tras Izq</td>
+                           <td align="center">
+                              <span t-esc="doc['balineras_patente_tras_izq']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Polv punta flecha Int Der</td>
+                           <td align="center">
+                              <span t-esc="doc['polv_punta_flecha_int_der']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Polv punta flecha Int Izq</td>
+                           <td align="center">
+                              <span t-esc="doc['polv_punta_flecha_int_izq']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Polv punta flecha Ext Der</td>
+                           <td align="center">
+                              <span t-esc="doc['polv_punta_flecha_ext_der']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Polv punta flecha Ext Izq</td>
+                           <td align="center">
+                              <span t-esc="doc['polv_punta_flecha_ext_izq']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Balín Pta flecha Del Ext</td>
+                           <td align="center">
+                              <span t-esc="doc['barra_torsion']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Balín Pta flecha Del Int</td>
+                           <td align="center">
+                              <span t-esc="doc['balin_pta_flecha_del_int']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Balín Pta flecha Del Ext</td>
+                           <td align="center">
+                              <span t-esc="doc['balin_pta_flecha_del_ext']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+               <table class="table table-bordered" style="width: 100%">
+                  <thead class="bg-info text-white">
+                     <tr>
+                        <th class="text-center" style="width: 50%">Motor/Inyección</th>
+                        <th class="text-center" style="width: 50">Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <t t-foreach="docs" t-as="doc">
+                        <tr style="height:0px;">
+                           <td align="center">Turbo</td>
+                           <td align="center">
+                              <span t-esc="doc['turbo']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Bomba</td>
+                           <td align="center">
+                              <span t-esc="doc['bomba']"/>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td align="center">Chisperos</td>
+                           <td align="center">
+                              <span t-esc="doc['chisperos']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Empaque tapa valvulva</td>
+                           <td align="center">
+                              <span t-esc="doc['empaque_tapa_valvulva']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Polv punta Banda de tiempo</td>
+                           <td align="center">
+                              <span t-esc="doc['banda_tiempo']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Correas</td>
+                           <td align="center">
+                              <span t-esc="doc['correas']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Polv punta flecha Ext Der</td>
+                           <td align="center">
+                              <span t-esc="doc['filtro_aire']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Filtro aire</td>
+                           <td align="center">
+                              <span t-esc="doc['polv_punta_flecha_ext_izq']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Filtro Comb</td>
+                           <td align="center">
+                              <span t-esc="doc['filtro_comb']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Calentadores</td>
+                           <td align="center">
+                              <span t-esc="doc['calentadores']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Termostato</td>
+                           <td align="center">
+                              <span t-esc="doc['termostato']"/>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td align="center">Termostato</td>
+                           <td align="center">
+                              <span t-esc="doc['afinador_mayor']"/>
+                           </td>
+                        </tr>
+
+                     </t>
+                  </tbody>
+               </table>
+
+
+            </div>
+
+
+
+          </t>
+         </t>
+      </t>
+
+   </template>
+
+
+
+
+</odoo>

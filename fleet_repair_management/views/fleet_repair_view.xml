@@ -181,9 +181,9 @@
 
 <!--Menuitems-->        
         <menuitem id="base.menu_base_fleet_repair" name="Fleet Repair" sequence="50" web_icon="fleet_repair_management,static/description/icon.png"/>
-        <menuitem name="Fleet Repair" parent="base.menu_base_fleet_repair" id="menu_fleet_repair" sequence="3" />
+        <menuitem name="Fleet Repair" parent="base.menu_base_fleet_repair" id="menu_fleet_repair" sequence="3"/>
         
-        <menuitem name="Fleet Repair" parent="menu_fleet_repair" id="menu_fleet_repair_submenu" sequence="3" action="action_fleet_repair_tree_view" />
+        <menuitem name="Fleet Repair" parent="menu_fleet_repair" id="menu_fleet_repair_submenu" sequence="3" action="action_fleet_repair_tree_view"/>
 
 <!-- fleet Lines-->
 
