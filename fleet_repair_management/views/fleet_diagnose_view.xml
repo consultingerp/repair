@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!--fleet Diagnose Form View-->
+
+        <record id="view_fleet_diagnose_form" model="ir.ui.view">
+            <field name="name">fleet.diagnose.form</field>
+            <field name="model">fleet.diagnose</field>
+            <field name="arch" type="xml">
+                <form string="Fleet Diagnosis">
+                    <header>
+                        <button name="action_create_quotation" string="Create Quotation" type="object" class="oe_highlight" style="float:left;" states="in_progress"/>
+                        <button name="assign_to_technician" string="Assign to Technician" states="draft" type="object" class="oe_highlight" style="float:left;" groups="fleet_repair_management.group_fleet_repair_head_technician,fleet_repair_management.group_fleet_repair_directeur_commercial"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                    <sheet string="Fleet Diagnosis">
+                    
+                                         <div class="oe_button_box" name="button_box">
+                     <button type="object"
+                        name="button_view_workorder"
+                        class="oe_stat_button"
+                        icon="fa-wrench"
+                        attrs="{'invisible': [('workorder_count', '=', 0)]}" groups="base.group_user">
+                        <field name="workorder_count" widget="statinfo" string="Work Order"/>
+                    </button>
+                        
+                        
+              		<button type="object"
+                        name="button_view_repair"
+                        class="oe_stat_button"
+                        icon="fa-truck"
+                        attrs="{'invisible': [('fleet_repair_count', '=', 0)]}" groups="base.group_user">
+                        <field name="fleet_repair_count" widget="statinfo" string="Repair Order"/>
+                    </button>
+              
+              	<button type="object"
+                        name="button_view_quotation"
+                        class="oe_stat_button"
+                        icon="fa-usd"
+                        attrs="{'invisible': [('quotation_count', '=', 0)]}" groups="base.group_user">
+                        <field name="quotation_count" widget="statinfo" string="Quotations"/>
+                    </button>
+              
+           
+              	<button type="object"
+                        name="button_view_saleorder"
+                        class="oe_stat_button"
+                        icon="fa-usd"
+                        attrs="{'invisible': [('saleorder_count', '=', 0)]}" groups="base.group_user">
+                        <field name="saleorder_count" widget="statinfo" string="Sales Orders"/>
+                    </button>
+              
+           
+           
+              	<button type="object"
+                        name="button_view_invoice"
+                        class="oe_stat_button"
+                        icon="fa-truck"
+                        attrs="{'invisible': [('inv_count', '=', 0)]}" groups="base.group_user">
+                        <field name="inv_count" widget="statinfo" string="Invoices"/>
+                    </button>
+                    
+                    
+                    </div>
+                    
+                    
+                    
+                    
+ 
+                        <div class="oe_title oe_left">
+                            <h1>
+                                <field name="service_rec_no"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name" readonly="True"/>
+                                <field name="user_id" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="priority" widget="priority" readonly="True"/>
+                                <field name="receipt_date" readonly="True"/>
+                                <field name="fleet_repair_id" invisible='True'/>
+                                <field name="sale_order_id" invisible='True'/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="General">
+                                <group string="Client Info">
+                                    <group>
+                                        <field name="client_id"  context="{'show_address': 1}" options='{"always_reload": True}' readonly="True"/>
+                                        <field name="contact_name" readonly="True"/>
+                                    </group>
+                                    <group>
+                                        <field name="client_phone" readonly="True"/>
+                                        <field name="client_mobile" readonly="True"/>
+                                        <field name="client_email" widget="email" readonly="True"/>
+                                        <field name="phone" readonly="True"/>
+                                    </group>
+                                    
+                                </group>
+                               <group string="Fleet Info">
+                                    <group>
+                                        <field name="fleet_repair_line" options="{'middle_node_select': False}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    </group>
+                                </group>
+                                  <separator string="Notes"/>
+                                <field name="description"/>
+                            </page>
+                            <page string="Diagnóstico">
+                                <group >
+                                    <group string="Llantas" colspan="1" >
+                                        <field name="llanta_delantera_izquierda" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="llanta_delantera_derecha" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="llanta_trasera_izquierda" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="llanta_trasera_derecha" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                    <group string="Alineación y Balanceo" colspan="1">
+                                        <field name="alineacion" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="perno_ajuste" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="balanceo" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="rotacion" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                </group>
+                                <group >
+                                    <group string="Aire Acondicionado" colspan="1" >
+                                        <field name="filtro_cabina" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="mtto_general" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="compresor" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="evaporador" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                    <group string="Nivel de fluidos" colspan="1">
+                                        <field name="refrigerante" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="aceite_motor" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="liquido_frenos" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="aciete_hidraulico" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="liquido_limpia_parabrisas" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                </group>
+                                <group >
+                                    <group string="Frenos delanteros" colspan="1" >
+                                        <field name="pastillas_frenos" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="discos_frenos" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="bombillos_frenos" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="campanas_frenos" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="limpieza_ajuste" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                    <group string="Frenos traseros" colspan="1">
+                                        <field name="fricciones" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="discos_frenos_tra" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="bombillos_frenos_tra" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="campanas_frenos_tra" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="limpieza_ajuste_tra" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                </group>
+                                <group >
+                                    <group string="Sistema eléctrico">
+                                        <field name="motor_arranque" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="alternador" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="regimen_carga" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="luces" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="terminales_sat" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="bateria" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                    <group string="Dirección">
+                                        <field name="terminales" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="brazos_cremallera" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="cremallera" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="caja_bomba_hidraulica" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="bujes_columna_direcc" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="cruz_cardanca" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                </group>
+                                <group >
+                                    <group string="Carrocería y chasis">
+                                        <field name="lavado_chasis" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="esprayado" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="lavado_motor" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="engrase" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="pasteado" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="pulido_carroceria" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="pulido_focos" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                    <group string="Suspensión" colspan="1">
+                                        <field name="amortig_soporte_del" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="amortig_soporte_tras" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="torre_bujes" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="bujes_tijera_sup_inf" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="rotulas_superiores" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="bujes_barra_estabil" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="bujes_barra_control" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="bielas_suspension" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="barra_torsion" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                </group>
+                                <group >
+                                    <group string="Rodamiento" colspan="1">
+                                        <field name="balineras_patente_der" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="balineras_patente_izr" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="balineras_patente_tras_der" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="balineras_patente_tras_izq" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="polv_punta_flecha_int_der" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="polv_punta_flecha_int_izq" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="polv_punta_flecha_ext_der" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="polv_punta_flecha_ext_izq" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="balin_pta_flecha_del_ext" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="balin_pta_flecha_del_int" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="balin_pta_flecha_tras" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                    <group string="Motor/Inyección">
+                                        <field name="turbo" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="bomba" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="chisperos" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="empaque_tapa_valvulva" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="banda_tiempo" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="correas" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="filtro_aire" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="filtro_comb" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="calentadores" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="termostato" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="afinador_mayor" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Piezas">
+                                <group>
+                                    <!--<field name="spare_part_ids"  domain="[('type', '!=', 'service')]"/>-->
+                                    <field name="spare_part_ids_x" >
+                                        <tree string="Spare Parts" editable="bottom">
+                                            <field name="product_id"  domain="[('type', '!=', 'service')]"/>
+                                            <field name="default_code"/>
+                                            <field name="quantity"/>
+                                            <field name="price_unit"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Mano de Obra">
+                                <group>
+                                    <!--<field name="product_ids_service" domain="[('type', '=', 'service')]"/>-->
+                                     <field name="spare_part_ids_y" >
+                                        <tree string="Services Needed" editable="bottom">
+                                            <field name="product_id" domain="[('type', '=', 'service')]"/>
+                                            <field name="default_code"/>
+                                            <field name="quantity"/>
+                                            <field name="price_unit"/>
+                                            <field name ="user_id" />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>                    
+                </form>
+            </field>
+        </record>
+        
+<!--fleet Diagnose Tree View-->
+
+        <record id="view_fleet_diagnose_tree" model="ir.ui.view">
+            <field name="name">Fleet.diagnose.tree</field>
+            <field name="model">fleet.diagnose</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Fleet Diagnosis">
+                    <field name="name" string="Subject"/>
+                    <field name="client_id"/>
+                    <field name="receipt_date"/>
+                    <field name="user_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_fleet_diagnose_filter" model="ir.ui.view">
+            <field name="name">fleet.diagnose.list.select</field>
+            <field name="model">fleet.diagnose</field>
+            <field name="arch" type="xml">
+                <search string="Search fleet Diagnoses">
+                    <field name="service_rec_no"/>
+                    <field name="name" string="Diagnose" />
+                    <field name="client_id" operator="child_of"/>
+                    <field name="fleet_repair_id"/>
+                    <separator/>
+               </search>
+            </field>
+        </record>
+
+        
+<!--fleet Diagnose Action-->
+        
+        <record model="ir.actions.act_window" id="action_fleet_diagnose_tree_view">
+            <field name="name">Fleet Diagnosis</field>
+            <field name="res_model">fleet.diagnose</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_fleet_diagnose_filter"/>
+            <field name="view_id" ref="view_fleet_diagnose_tree"/>
+        </record>
+        
+<!--fleet Diagnose Menuitems-->
+        
+        <menuitem name="Fleet Diagnosis" parent="menu_fleet_repair" id="menu_fleet_diagnosis_submenu" sequence="7" action="action_fleet_diagnose_tree_view"/>
+        
+    </data>
+</openerp>        
