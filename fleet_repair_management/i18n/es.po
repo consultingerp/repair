@@ -1,0 +1,2750 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fleet_repair_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e-20190531\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-14 18:59+0000\n"
+"PO-Revision-Date: 2020-01-14 15:33-0600\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.2.4\n"
+
+#. module: fleet_repair_management
+#: model:mail.template,body_html:fleet_repair_management.email_template_car_ticket1_fleet
+msgid ""
+"\n"
+"            \n"
+"<p>Dear ${object.client_id.name},\n"
+"\n"
+"% set access_action = object.get_access_action()\n"
+"% set access_url = access_action['type'] == 'ir.actions.act_url' and access_action['url'] or '/car_repair_email/feedback/'+str(object.id)\n"
+"% set is_online = access_action and access_action['type'] == 'ir.actions.act_url'\n"
+"\n"
+"<p>We have closed your ticket for now, if you want to reopen please do not hesitate contact us.\n"
+"\n"
+"<p><a style=\"padding: 8px 30px 8px 30px;border-radius: 6px;border: 1px solid #CCCCCC;background:#008080;margin-left: 2px;text-decoration: none;color:#FFFFFF;\" href=\"${access_url}\">Please give your feedback</a>\n"
+"<p>Thanks for your participation!\n"
+"<p>Thank you for choosing ${object.company_id.name or 'us'}!</p>\n"
+"           <br/>\n"
+"           <div style=\"width: 375px; margin: 0px; padding: 0px; background-color: #8E0000; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"       <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; color: #DDD;\">\n"
+"           <strong style=\"text-transform:uppercase;\">${object.company_id.name}</strong></h3>\n"
+"   </div>\n"
+"   <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;\">\n"
+"       <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"           ${object.company_id.partner_id.sudo().with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n"
+"       </span>\n"
+"       % if object.company_id.phone:\n"
+"           <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"               Phone:&nbsp; ${object.company_id.phone}\n"
+"           </div>\n"
+"       % endif\n"
+"       % if object.company_id.website:\n"
+"           <div>\n"
+"               Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"           </div>\n"
+"       %endif\n"
+"       <p></p>\n"
+"   </div>\n"
+"            "
+msgstr ""
+"\n"
+"            \n"
+"<p>Querido ${object.client_id.name},\n"
+"\n"
+"% set access_action = object.get_access_action()\n"
+"% set access_url = access_action[‘type’] == ‘ir.actions.act_url’ and access_action[‘url’] or ‘/car_repair_email/feedback/‘+str(object.id)\n"
+"% set is_online = access_action and access_action[‘type’] == ‘ir.actions.act_url’\n"
+"\n"
+"<p>Hemos cerrado su boleto por ahora, si desea volver a abrir, no dude en contactarnos.\n"
+"\n"
+"<p><a style=“padding: 8px 30px 8px 30px;border-radius: 6px;border: 1px solid #CCCCCC;background:#008080;margin-left: 2px;text-decoration: none;color:#FFFFFF;” href=“${access_url}”>Por favor dé su opinión</a>\n"
+"<p>Gracias por su participación!\n"
+"<p>Gracias por preferir ${object.company_id.name or ‘us’}!</p>\n"
+"           <br/>\n"
+"           <div style=“width: 375px; margin: 0px; padding: 0px; background-color: #8E0000; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;”>\n"
+"       <h3 style=“margin: 0px; padding: 2px 14px; font-size: 12px; color: #DDD;”>\n"
+"           <strong style=“text-transform:uppercase;”>${object.company_id.name}</strong></h3>\n"
+"   </div>\n"
+"   <div style=“width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;”>\n"
+"       <span style=“color: #222; margin-bottom: 5px; display: block; “>\n"
+"           ${object.company_id.partner_id.sudo().with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n"
+"       </span>\n"
+"       % if object.company_id.phone:\n"
+"           <div style=“margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; “>\n"
+"               Phone:&nbsp; ${object.company_id.phone}\n"
+"           </div>\n"
+"       % endif\n"
+"       % if object.company_id.website:\n"
+"           <div>\n"
+"               Web :&nbsp;<a href=“${object.company_id.website}”>${object.company_id.website}</a>\n"
+"           </div>\n"
+"       %endif\n"
+"       <p></p>\n"
+"   </div>\n"
+"            "
+
+#. module: fleet_repair_management
+#: model:mail.template,subject:fleet_repair_management.email_template_car_ticket1_fleet
+msgid "${object.name} - (Closed)"
+msgstr "${object.name} - (Cerrado)"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__state
+msgid ""
+"* When a work order is created it is set in 'Draft' status.\n"
+"* When user sets work order in start mode that time it will be set in 'In Progress' status.\n"
+"* When work order is in running mode, during that time if user wants to stop or to make changes in order then can set in 'Pending' status.\n"
+"* When the user cancels the work order it will be set in 'Canceled' status.\n"
+"* When order is completely processed that time it is set in 'Finished' status."
+msgstr ""
+"* Cuando se crea una orden de trabajo, se establece en estado ‘Borrador’.\n"
+"* Cuando el usuario establece la orden de trabajo en el modo de inicio, esa vez se establecerá en el estado ‘En progreso’.\n"
+"* Cuando la orden de trabajo está en modo de ejecución, durante ese tiempo, si el usuario desea detenerse o hacer cambios en el orden, puede establecer el estado ‘Pendiente’.\n"
+"* Cuando el usuario cancela la orden de trabajo, se establecerá en estado ‘Cancelado’.\n"
+"* Cuando el pedido se procesa por completo ese tiempo, se establece en el estado ‘Finalizado’."
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<b><span>CODE</span></b>"
+msgstr "<b><span>CÓDIGO</span></b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<b><span>Client Address</span></b>"
+msgstr "<b><span>Dirección de Cliente</span></b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<b><span>Date of Receipt</span></b>"
+msgstr "<b><span>Día de Solicitud</span></b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<b><span>FLEET</span></b>"
+msgstr "<b><span>FLOTA</span></b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<b><span>GUARANTEE</span></b>"
+msgstr "<b><span>GARANTÍA</span></b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<b><span>MODEL NUMBER</span></b>"
+msgstr "<b><span>NÚMERO DE MODELO</span></b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<b><span>QUANTITY</span></b>"
+msgstr "<b><span>CANTIDAD</span></b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<b><span>SERIAL NUMBER</span></b>"
+msgstr "<b><span>NÚMERO DE SERIE</span></b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<b><span>SERVICE TYPE</span></b>"
+msgstr "<b><span>TYPO DE SERVICIO</span></b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<b><span>SPARE PART</span></b>"
+msgstr "<b><span>PIEZAS DE REPUESTOS</span></b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<b><span>fleet</span></b>"
+msgstr "<b><span>flota</span></b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<b>Car Information</b>"
+msgstr "<b>Información del Vehiculo</b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<b>Client Information</b>"
+msgstr "<b>Información del Cliente</b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+msgid "<b>Note:</b>"
+msgstr "<b>Nota:</b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<b>Other Information</b>"
+msgstr "<b>Otra Información</b>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.successful_feedback_car_fleet
+msgid "<span class=\"hidden-xs\">Go Back</span><span class=\"fa fa-long-arrow-left\"/>"
+msgstr "<span class=“hidden-xs”>Regrezar</span><span class=“fa fa-long-arrow-left”/>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_account_invoice_inherit
+msgid ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Amount</span>\n"
+"                                    <span groups=\"account.group_show_line_subtotals_tax_included\">Total Price</span>"
+msgstr ""
+"<span groups=“account.group_show_line_subtotals_tax_excluded”>Monto</span>\n"
+"                                    <span groups=“account.group_show_line_subtotals_tax_included”>Precio Total</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+msgid "<span style=\"border-top: 1px solid;\">Signature of Reception</span>"
+msgstr "<span style=“border-top: 1px solid;”>Firma de Recepción</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+msgid "<span style=\"border-top: 1px solid;float:right;\">Signature of Client</span>"
+msgstr "<span style=“border-top: 1px solid;float:right;”>Firma de Cliente</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<span style=\"font-size: 20.0; font-weight: bold; margin-top: 20px;\">DIAGNOSTIC RESULT:</span>"
+msgstr "<span style=“font-size: 20.0; font-weight: bold; margin-top: 20px;”>RESULTADO DE DIAGNOSTICO:</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<span style=\"font-size: 20.0; font-weight: bold;\">SERVICE DETAILS:</span>"
+msgstr "<span style=“font-size: 20.0; font-weight: bold;”>DETALLES DEL SERVICIO:</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<span style=\"font-weight: bold;\">Contact Number:</span>"
+msgstr "<span style=“font-weight: bold;”>Número de Contacto:</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<span style=\"font-weight: bold;\">Email:</span>"
+msgstr "<span style=“font-weight: bold;”>Correo Electrónico:</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<span style=\"font-weight: bold;\">Mobile:</span>"
+msgstr "<span style=“font-weight: bold;”>Movil:</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<span style=\"font-weight: bold;\">Phone:</span>"
+msgstr "<span style=“font-weight: bold;”>Teléfono:</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_label_template_view
+msgid "<span style=\"margin-left: 5px;\">Client</span>"
+msgstr "<span style=“margin-left: 5px;”>Cliente</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_label_template_view
+msgid "<span style=\"margin-left: 5px;\">Description</span>"
+msgstr "<span style=“margin-left: 5px;”>Descripción</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_label_template_view
+msgid "<span style=\"margin-left: 5px;\">FLEET</span>"
+msgstr "<span style=“margin-left: 5px;”>FLOTA</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_label_template_view
+msgid "<span style=\"margin-left: 5px;\">N° Serial</span>"
+msgstr "<span style=“margin-left: 5px;”>N° Serie</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_label_template_view
+msgid "<span style=\"margin-left: 5px;\">Service</span>"
+msgstr "<span style=“margin-left: 5px;”>Servicio</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_account_invoice_inherit
+msgid "<span>Description</span>"
+msgstr "<span>Descripción</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_account_invoice_inherit
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_sale_order_inherit
+msgid "<span>Disc.(%)</span>"
+msgstr "<span>Desc.(%)</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_account_invoice_inherit
+msgid "<span>Producto</span>"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_account_invoice_inherit
+msgid "<span>Quantity</span>"
+msgstr "<span>Cantidad</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_account_invoice_inherit
+msgid "<span>Source Document</span>"
+msgstr "<span>Documento Origen</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_account_invoice_inherit
+msgid "<span>Taxes</span>"
+msgstr "<span>Impuestos</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_account_invoice_inherit
+msgid "<span>Unit Price</span>"
+msgstr "<span>Precio Unitario</span>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_account_invoice_inherit
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_sale_order_inherit
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<strong>Client</strong>"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<strong>Company</strong>"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<strong>Contact Name</strong>"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<strong>Email</strong>"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<strong>Is Repaied ?</strong>"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<strong>Name</strong>"
+msgstr "<strong>Nombre</strong>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<strong>Phone</strong>"
+msgstr "<strong>Teléfono</strong>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<strong>Priority</strong>"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<strong>Receipt Date</strong>"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "<strong>Techniseal</strong>"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "<strong>Tel: </strong>"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__aceite_motor
+msgid "Aceite de motor"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__aciete_hidraulico
+msgid "Aciete hidráulico"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_needaction
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_needaction
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_needaction
+msgid "Action Needed"
+msgstr "Acción Necesaria"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Actual Repairing Date"
+msgstr "Día actual de reparación"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__afinador_mayor
+msgid "Afinador mayor"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Aire Acondicionado"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__alineacion
+msgid "Alineación"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Alineación y Balanceo"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__alternador
+msgid "Alternador"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__amortig_soporte_del
+msgid "Amortig y soporte del."
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__amortig_soporte_tras
+msgid "Amortig y soporte tras."
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_sale_order_inherit
+msgid "Amount"
+msgstr "Importe"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_assign_to_tech_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_assign_to_head_tech_form
+msgid "Assign"
+msgstr "Asignar"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_assign_to_head_tech_form
+msgid "Assign To Head-Technician"
+msgstr "Asignar a jefe de técnicos"
+
+#. module: fleet_repair_management
+#: model:ir.actions.act_window,name:fleet_repair_management.action_fleet_diagnose_assign_to_technician
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_assign_to_tech_form
+msgid "Assign To Technician"
+msgstr "Asignar a técnico"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Assign to Technician"
+msgstr "Asignar a técnicos"
+
+#. module: fleet_repair_management
+#: model:ir.actions.act_window,name:fleet_repair_management.action_fleet_repair_assign_to_head_tech
+msgid "Assigned To Head-Technician"
+msgstr "Asignar a jefe de técnicos"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__user_id
+msgid "Assigned to"
+msgstr "Asignada a"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_attachment_count
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_attachment_count
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_attachment_count
+msgid "Attachment Count"
+msgstr "Conteo de archivos adjuntos"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,rating:0
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.car_repair_feedback_fleet
+msgid "Average"
+msgstr "Promedio"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__balanceo
+msgid "Balanceo"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__balineras_patente_der
+msgid "Balineras patente Del Der"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__balineras_patente_izr
+msgid "Balineras patente Del Izq"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__balineras_patente_tras_der
+msgid "Balineras patente Tras Der"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__balineras_patente_tras_izq
+msgid "Balineras patente Tras Izq"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__balin_pta_flecha_del_ext
+msgid "Balín Pta flecha Del Ext"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__balin_pta_flecha_del_int
+msgid "Balín Pta flecha Del Int"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__balin_pta_flecha_tras
+msgid "Balín Pta flecha Tras"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__banda_tiempo
+msgid "Banda de tiempo"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__barra_torsion
+msgid "Barra de torsión"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__bateria
+msgid "Batería"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__bielas_suspension
+msgid "Bielas de suspension"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.ui.menu,name:fleet_repair_management.menu_quotation
+msgid "Billing"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__bomba
+msgid "Bomba"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__bombillos_frenos
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__bombillos_frenos_tra
+msgid "Bombillos de frenos"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__brazos_cremallera
+msgid "Brazos de cremallera"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__bujes_barra_control
+msgid "Bujes barra control."
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__bujes_barra_estabil
+msgid "Bujes barra estabil."
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__bujes_columna_direcc
+msgid "Bujes columna direcc"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__bujes_tijera_sup_inf
+msgid "Bujes de tijera sup. e inf."
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__caja_bomba_hidraulica
+msgid "Caja/Bomba Hidráulica"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__calentadores
+msgid "Calentadores"
+msgstr ""
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,aceite_motor:0
+#: selection:fleet.diagnose,aciete_hidraulico:0
+#: selection:fleet.diagnose,afinador_mayor:0
+#: selection:fleet.diagnose,alineacion:0 selection:fleet.diagnose,alternador:0
+#: selection:fleet.diagnose,amortig_soporte_del:0
+#: selection:fleet.diagnose,amortig_soporte_tras:0
+#: selection:fleet.diagnose,balanceo:0
+#: selection:fleet.diagnose,balin_pta_flecha_del_ext:0
+#: selection:fleet.diagnose,balin_pta_flecha_del_int:0
+#: selection:fleet.diagnose,balin_pta_flecha_tras:0
+#: selection:fleet.diagnose,balineras_patente_der:0
+#: selection:fleet.diagnose,balineras_patente_izr:0
+#: selection:fleet.diagnose,balineras_patente_tras_der:0
+#: selection:fleet.diagnose,balineras_patente_tras_izq:0
+#: selection:fleet.diagnose,banda_tiempo:0
+#: selection:fleet.diagnose,barra_torsion:0 selection:fleet.diagnose,bateria:0
+#: selection:fleet.diagnose,bielas_suspension:0
+#: selection:fleet.diagnose,bomba:0 selection:fleet.diagnose,bombillos_frenos:0
+#: selection:fleet.diagnose,bombillos_frenos_tra:0
+#: selection:fleet.diagnose,brazos_cremallera:0
+#: selection:fleet.diagnose,bujes_barra_control:0
+#: selection:fleet.diagnose,bujes_barra_estabil:0
+#: selection:fleet.diagnose,bujes_columna_direcc:0
+#: selection:fleet.diagnose,bujes_tijera_sup_inf:0
+#: selection:fleet.diagnose,caja_bomba_hidraulica:0
+#: selection:fleet.diagnose,calentadores:0
+#: selection:fleet.diagnose,campanas_frenos:0
+#: selection:fleet.diagnose,campanas_frenos_tra:0
+#: selection:fleet.diagnose,chisperos:0 selection:fleet.diagnose,compresor:0
+#: selection:fleet.diagnose,correas:0 selection:fleet.diagnose,cremallera:0
+#: selection:fleet.diagnose,cruz_cardanca:0
+#: selection:fleet.diagnose,discos_frenos:0
+#: selection:fleet.diagnose,discos_frenos_tra:0
+#: selection:fleet.diagnose,empaque_tapa_valvulva:0
+#: selection:fleet.diagnose,engrase:0 selection:fleet.diagnose,esprayado:0
+#: selection:fleet.diagnose,evaporador:0 selection:fleet.diagnose,filtro_aire:0
+#: selection:fleet.diagnose,filtro_cabina:0
+#: selection:fleet.diagnose,filtro_comb:0 selection:fleet.diagnose,fricciones:0
+#: selection:fleet.diagnose,lavado_chasis:0
+#: selection:fleet.diagnose,lavado_motor:0
+#: selection:fleet.diagnose,limpieza_ajuste:0
+#: selection:fleet.diagnose,limpieza_ajuste_tra:0
+#: selection:fleet.diagnose,liquido_frenos:0
+#: selection:fleet.diagnose,liquido_limpia_parabrisas:0
+#: selection:fleet.diagnose,llanta_delantera_derecha:0
+#: selection:fleet.diagnose,llanta_delantera_izquierda:0
+#: selection:fleet.diagnose,llanta_trasera_derecha:0
+#: selection:fleet.diagnose,llanta_trasera_izquierda:0
+#: selection:fleet.diagnose,luces:0 selection:fleet.diagnose,motor_arranque:0
+#: selection:fleet.diagnose,mtto_general:0 selection:fleet.diagnose,pasteado:0
+#: selection:fleet.diagnose,pastillas_frenos:0
+#: selection:fleet.diagnose,perno_ajuste:0
+#: selection:fleet.diagnose,polv_punta_flecha_ext_der:0
+#: selection:fleet.diagnose,polv_punta_flecha_ext_izq:0
+#: selection:fleet.diagnose,polv_punta_flecha_int_der:0
+#: selection:fleet.diagnose,polv_punta_flecha_int_izq:0
+#: selection:fleet.diagnose,pulido_carroceria:0
+#: selection:fleet.diagnose,pulido_focos:0
+#: selection:fleet.diagnose,refrigerante:0
+#: selection:fleet.diagnose,regimen_carga:0 selection:fleet.diagnose,rotacion:0
+#: selection:fleet.diagnose,rotulas_inferiores:0
+#: selection:fleet.diagnose,rotulas_superiores:0
+#: selection:fleet.diagnose,terminales:0
+#: selection:fleet.diagnose,terminales_sat:0
+#: selection:fleet.diagnose,termostato:0 selection:fleet.diagnose,torre_bujes:0
+#: selection:fleet.diagnose,turbo:0
+msgid "Cambio inmediato"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__campanas_frenos
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__campanas_frenos_tra
+msgid "Campanas frenos"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_assign_to_tech_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_assign_to_head_tech_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.custom_view_order_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Cancel Order"
+msgstr "Cancelar Orden"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,state:0 selection:fleet.repair.analysis,state:0
+#: selection:fleet.workorder,state:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_product_product__horas
+#: model:ir.model.fields,field_description:fleet_repair_management.field_product_template__horas
+msgid "Cant. de horas"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:mail.template,report_name:fleet_repair_management.email_template_car_ticket1_fleet
+msgid "Car Repair Report"
+msgstr "Reporte de Reparación de auto"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Carrocería y chasis"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__vin_sn
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__vin_sn
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__vin_sn
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__vin_sn
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "Chassis Number"
+msgstr "Número de bastidor"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__chisperos
+msgid "Chisperos"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Clasificación del cliente"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.actions.act_window,help:fleet_repair_management.action_invoice_tree1
+msgid "Click to create a customer invoice."
+msgstr "Click to create a customer invoice."
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__client_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__client_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_analysis__client_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__client_id
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_analysis_search
+msgid "Client"
+msgstr "Cliente"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Client Info"
+msgstr "Información de Cliente"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,state:0
+msgid "Closed"
+msgstr "Cerrado"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.car_repair_feedback_fleet
+msgid "Comment :"
+msgstr "Comentarios :"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,state:0
+msgid "Complete"
+msgstr "Completo"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__compresor
+msgid "Compresor"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__contact_name
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__contact_name
+msgid "Contact Name"
+msgstr "Nombre de Contacto"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__phone
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__phone
+msgid "Contact Number"
+msgstr "Número de Contacto"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__correas
+msgid "Correas"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Create Fleet Diagnosis"
+msgstr "Crear Diagnóstico de Flota"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Create Quotation"
+msgstr "Crear Cotización"
+
+#. module: fleet_repair_management
+#: model_terms:ir.actions.act_window,help:fleet_repair_management.action_quotations
+#: model_terms:ir.actions.act_window,help:fleet_repair_management.action_saleorder
+msgid "Create a Quotation, the first step of a new sale."
+msgstr "Crear una Cotización, el primer paso de una nueva venta"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__create_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose_assignto_technician__create_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__create_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_analysis__create_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_assignto_headtech__create_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__create_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__create_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_service_type__create_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__create_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose_assignto_technician__create_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__create_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_analysis__create_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_assignto_headtech__create_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__create_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__create_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_service_type__create_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__cremallera
+msgid "Cremallera"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__cruz_cardanca
+msgid "Cruz cardanca"
+msgstr "Cruz cardánica"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__comment
+msgid "Customer Comment"
+msgstr "Comentarios del Cliente"
+
+#. module: fleet_repair_management
+#: model:ir.actions.act_window,name:fleet_repair_management.action_invoice_tree1
+msgid "Customer Invoices"
+msgstr "Facturas de clientes"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__rating
+msgid "Customer Rating"
+msgstr "Puntuación de Cliente"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__receipt_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__receipt_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_analysis__receipt_date
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_analysis_search
+msgid "Date of Receipt"
+msgstr "Día de Recepción"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__llanta_delantera_derecha
+msgid "Delantera  derecha"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__llanta_delantera_izquierda
+msgid "Delantera  izquierda"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__name
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_sale_order_inherit
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "Description"
+msgstr "Descripción"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_filter
+msgid "Diagnose"
+msgstr "Diagnóstico"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Diagnoses"
+msgstr "Diagnostico"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,state:0 selection:fleet.repair.analysis,state:0
+msgid "Diagnosis Complete"
+msgstr "Diagnostico completo"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__dig_count
+msgid "Diagnosis Orders"
+msgstr "Ordenes de Diagnósticos"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_repair_fleet_line_form
+msgid "Diagnosis Report"
+msgstr "Reporte de Diagnostico"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__diagnostic_result
+msgid "Diagnostic Result"
+msgstr "Resultado de Diagnostico"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_repair_fleet_line_form
+msgid "Diagnostic Results"
+msgstr "Resultados de Diagnósticos"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Diagnóstico"
+msgstr ""
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,fuel_type:0 selection:fleet.repair,fuel_type:0
+#: selection:fleet.repair.line,fuel_type:0
+#: selection:fleet.workorder,fuel_type:0
+msgid "Diesel"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Dirección"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:res.groups,name:fleet_repair_management.group_fleet_repair_directeur_commercial
+msgid "Directeur Commercial"
+msgstr "Director Comercial"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__discos_frenos
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__discos_frenos_tra
+msgid "Discos de frenos"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__display_name
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose_assignto_technician__display_name
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__display_name
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_analysis__display_name
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_assignto_headtech__display_name
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__display_name
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__display_name
+#: model:ir.model.fields,field_description:fleet_repair_management.field_service_type__display_name
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,state:0 selection:fleet.repair.analysis,state:0
+#: selection:fleet.repair.line,state:0
+msgid "Done"
+msgstr "Hecho"
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,state:0 selection:fleet.repair.line,state:0
+#: selection:fleet.workorder,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Duration"
+msgstr "Duración"
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,fuel_type:0 selection:fleet.repair,fuel_type:0
+#: selection:fleet.repair.line,fuel_type:0
+#: selection:fleet.workorder,fuel_type:0
+msgid "Electric"
+msgstr "Eléctrico"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__client_email
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__client_email
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__client_email
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_mail_compose_message
+msgid "Email composition wizard"
+msgstr "Asistente de redacción de correo electrónico."
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__empaque_tapa_valvulva
+msgid "Empaque tapa valvulva"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__date_finished
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__date_planned_end
+msgid "End Date"
+msgstr "Fecha finalización"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__engrase
+msgid "Engrase"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_repair_fleet_line_form
+msgid "Enter Results"
+msgstr "Teclee Resultados"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__esprayado
+msgid "Esprayado"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__est_ser_hour
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__est_ser_hour
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__est_ser_hour
+msgid "Estimated Sevice Hours"
+msgstr "Horas de Servicios Estimadas"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__evaporador
+msgid "Evaporador"
+msgstr ""
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,rating:0
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.car_repair_feedback_fleet
+msgid "Excellent"
+msgstr "Excelente"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__description
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__description
+msgid "Fault Description"
+msgstr "Descripción del Fallo"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__filtro_comb
+msgid "Filtro Comb"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__filtro_aire
+msgid "Filtro aire"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__filtro_cabina
+msgid "Filtro cabina"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Finish Order"
+msgstr "Finalizar orden"
+
+#. module: fleet_repair_management
+#: selection:fleet.workorder,state:0
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Finished"
+msgstr "Terminado"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_account_invoice__create_form_fleet
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__fleet_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__fleet_repair_line
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__fleet_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__fleet_repair_line
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__fleet_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__fleet_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__fleet_repair_line
+#: model:ir.model.fields,field_description:fleet_repair_management.field_sale_order__fleet_repair_line
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__fleet_id
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "Fleet"
+msgstr "Flota"
+
+#. module: fleet_repair_management
+#: code:addons/fleet_repair_management/models/fleet_repair.py:139
+#: code:addons/fleet_repair_management/models/fleet_workorder.py:117
+#: model:ir.actions.act_window,name:fleet_repair_management.action_fleet_diagnose_tree_view
+#: model:ir.ui.menu,name:fleet_repair_management.menu_fleet_diagnosis_submenu
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_tree
+#, python-format
+msgid "Fleet Diagnosis"
+msgstr "Diagnóstico de flota"
+
+#. module: fleet_repair_management
+#: model:ir.actions.report,name:fleet_repair_management.fleet_diagnostic_request_report_id
+msgid "Fleet Diagnostic Request"
+msgstr "Solicitud de Diagnóstico de Flota"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Fleet Info"
+msgstr "Información de Flota"
+
+#. module: fleet_repair_management
+#: code:addons/fleet_repair_management/models/custom_sale.py:102
+#: code:addons/fleet_repair_management/models/fleet_diagnose.py:352
+#: code:addons/fleet_repair_management/models/fleet_workorder.py:98
+#: model:ir.actions.act_window,name:fleet_repair_management.action_fleet_repair_tree_view
+#: model:ir.model.fields,field_description:fleet_repair_management.field_sale_order__fleet_repair_id
+#: model:ir.module.category,name:fleet_repair_management.module_category_fleet_repair
+#: model:ir.ui.menu,name:fleet_repair_management.menu_fleet_repair
+#: model:ir.ui.menu,name:fleet_repair_management.menu_fleet_repair_analysis
+#: model:ir.ui.menu,name:fleet_repair_management.menu_fleet_repair_submenu
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_tree
+#, python-format
+msgid "Fleet Repair"
+msgstr "Reparación de Flota"
+
+#. module: fleet_repair_management
+#: model:ir.actions.act_window,name:fleet_repair_management.fleet_repair_analysis_action
+#: model:ir.ui.menu,name:fleet_repair_management.menu_fleet_repair_analysis_submenu
+msgid "Fleet Repair Analysis"
+msgstr "Análisis de reparación de Flota"
+
+#. module: fleet_repair_management
+#: model:ir.actions.report,name:fleet_repair_management.fleet_repair_label_id
+msgid "Fleet Repair Label"
+msgstr "Etiqueta de Reparación de Flota"
+
+#. module: fleet_repair_management
+#: model:ir.actions.report,name:fleet_repair_management.fleet_repair_receipt_id
+msgid "Fleet Repair Receipt"
+msgstr "Recepción de Reparación de Flota"
+
+#. module: fleet_repair_management
+#: code:addons/fleet_repair_management/models/custom_sale.py:121
+#: code:addons/fleet_repair_management/models/fleet_diagnose.py:371
+#: code:addons/fleet_repair_management/models/fleet_repair.py:158
+#: code:addons/fleet_repair_management/models/fleet_repair.py:177
+#, python-format
+msgid "Fleet Work Order"
+msgstr "Orden de trabajo de Flota"
+
+#. module: fleet_repair_management
+#: model:ir.actions.report,name:fleet_repair_management.fleet_workorder_report_id
+msgid "Fleet Workorder"
+msgstr "Orden de Trabajo de Flota"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_follower_ids
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_follower_ids
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_channel_ids
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_channel_ids
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_partner_ids
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_partner_ids
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,guarantee_type:0
+#: selection:fleet.repair.line,guarantee_type:0
+msgid "Free"
+msgstr "Libre"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Frenos delanteros"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Frenos traseros"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__fricciones
+msgid "Fricciones"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__fuel_type
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__fuel_type
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__fuel_type
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__fuel_type
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "Fuel Type"
+msgstr "Tipo de combustible"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__fuel_type
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__fuel_type
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair_line__fuel_type
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__fuel_type
+msgid "Fuel Used by the vehicle"
+msgstr "Combustible usado por el vehículo"
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,fuel_type:0 selection:fleet.repair,fuel_type:0
+#: selection:fleet.repair.line,fuel_type:0
+#: selection:fleet.workorder,fuel_type:0
+msgid "Gasoline"
+msgstr "Gasolina"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "General"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__state
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair_line__state
+msgid "Gives the status of the fleet Diagnosis."
+msgstr "Obtener el estado del diagnóstico de Flota"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__state
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair_analysis__state
+msgid "Gives the status of the fleet repairing."
+msgstr "Obtener el estado de la reparación de flota"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,rating:0
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.car_repair_feedback_fleet
+msgid "Good"
+msgstr "Bien"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_analysis_search
+msgid "Group by..."
+msgstr "Agrupar por..."
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__guarantee_type
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__guarantee_type
+msgid "Guarantee Type"
+msgstr "Tipo de Garantía"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_assignto_headtech__user_id
+#: model:res.groups,name:fleet_repair_management.group_fleet_repair_head_technician
+msgid "Head Technician"
+msgstr "Jefe de Técnico"
+
+#. module: fleet_repair_management
+#: model:ir.module.category,description:fleet_repair_management.module_category_fleet_repair
+msgid "Helps you manage your fleet Repairing."
+msgstr "Ayuda para manejar su orden de Reparación"
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,priority:0 selection:fleet.repair,priority:0
+#: selection:fleet.workorder,priority:0
+msgid "High"
+msgstr "Alto"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__hours_worked
+msgid "Hours Worked"
+msgstr "Horas trabajadas"
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,fuel_type:0 selection:fleet.repair,fuel_type:0
+#: selection:fleet.repair.line,fuel_type:0
+#: selection:fleet.workorder,fuel_type:0
+msgid "Hybrid"
+msgstr "Híbrido "
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose_assignto_technician__id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_analysis__id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_assignto_headtech__id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_service_type__id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__id
+msgid "ID"
+msgstr "ID"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__message_unread
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__message_unread
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__message_unread
+msgid "If checked new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__message_needaction
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__message_needaction
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__message_has_error
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__message_has_error
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Image 1"
+msgstr "Imagen 1"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Image 2"
+msgstr "Imagen 2 "
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Image 3"
+msgstr "Imagen 3"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Image 4"
+msgstr "Imagen 4"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Image 5"
+msgstr "Imagen 5"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__img1
+msgid "Images1"
+msgstr "Imagen1"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__img2
+msgid "Images2"
+msgstr "Imagen2"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__img3
+msgid "Images3"
+msgstr "Imagen3"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__img4
+msgid "Images4"
+msgstr "Imagen4"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__img5
+msgid "Images5"
+msgstr "Imagen5"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Imágenes del carro"
+msgstr ""
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,state:0 selection:fleet.repair.analysis,state:0
+#: selection:fleet.repair.line,state:0
+msgid "In Diagnosis"
+msgstr "En Diagnóstico"
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,state:0 selection:fleet.workorder,state:0
+msgid "In Progress"
+msgstr "En progreso"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Information"
+msgstr "Información"
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_account_invoice
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__inv_count
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__inv_count
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__count_dig
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__count_fleet_repair
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: fleet_repair_management
+#: code:addons/fleet_repair_management/models/fleet_diagnose.py:432
+#: code:addons/fleet_repair_management/models/fleet_repair.py:240
+#, python-format
+msgid "Invoice "
+msgstr "Factura"
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Linea de Factura"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,state:0 selection:fleet.repair.analysis,state:0
+msgid "Invoiced"
+msgstr "Facturado"
+
+#. module: fleet_repair_management
+#: model:ir.ui.menu,name:fleet_repair_management.menu_sale_order_sub1
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Invoices"
+msgstr "Facturas"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_is_follower
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_is_follower
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__is_close
+msgid "Is Ticket Closed ?"
+msgstr "Está el ticket cerrado"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose____last_update
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose_assignto_technician____last_update
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair____last_update
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_analysis____last_update
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_assignto_headtech____last_update
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line____last_update
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder____last_update
+#: model:ir.model.fields,field_description:fleet_repair_management.field_service_type____last_update
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__write_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose_assignto_technician__write_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__write_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_analysis__write_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_assignto_headtech__write_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__write_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__write_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_service_type__write_uid
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__write_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose_assignto_technician__write_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__write_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_analysis__write_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_assignto_headtech__write_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__write_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__write_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_service_type__write_date
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__lavado_chasis
+msgid "Lavado de chasis"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__lavado_motor
+msgid "Lavado de motor"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_account_invoice_line__license_plate
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__license_plate
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__license_plate
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__license_plate
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__license_plate
+#: model:ir.model.fields,field_description:fleet_repair_management.field_sale_order_line__license_plate
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "License Plate"
+msgstr "Matrícula"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__license_plate
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__license_plate
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair_line__license_plate
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__license_plate
+msgid "License plate number of the vehicle (ie: plate number for a car)"
+msgstr "Matricula de un vehiculo"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__limpieza_ajuste
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__limpieza_ajuste_tra
+msgid "Limpieza/Ajuste"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Llantas"
+msgstr ""
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,priority:0 selection:fleet.repair,priority:0
+#: selection:fleet.workorder,priority:0
+msgid "Low"
+msgstr "Bajo"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__luces
+msgid "Luces"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__liquido_frenos
+msgid "Líquido de frenos"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__liquido_limpia_parabrisas
+msgid "Líquido limpia parabrisas"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__mtto_general
+msgid "MTTO general"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_main_attachment_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_main_attachment_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjuntos principales"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Mano de Obra"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_has_error
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_has_error
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_ids
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_ids
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__client_mobile
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__client_mobile
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__client_mobile
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__model_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__model_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__model_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__model_id
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "Model"
+msgstr "Modelo"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_account_invoice_line__car_model
+#: model:ir.model.fields,field_description:fleet_repair_management.field_sale_order_line__car_model
+msgid "Model #"
+msgstr "# Modelo"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__model_id
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__model_id
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair_line__model_id
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__model_id
+msgid "Model of the vehicle"
+msgstr "Modelo del vehículo"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__motor_arranque
+msgid "Motor de arranque"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Motor/Inyección"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_service_type__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__service_type
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__service_type
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__service_type
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__service_type
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "Nature of Service"
+msgstr "Naturaleza del servicio"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Siguiente plazo de actividad"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Nivel de fluidos"
+msgstr ""
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,guarantee:0 selection:fleet.repair.line,guarantee:0
+msgid "No"
+msgstr ""
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,priority:0 selection:fleet.repair,priority:0
+#: selection:fleet.workorder,priority:0
+msgid "Normal"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.actions.act_window,help:fleet_repair_management.action_quotations
+#: model_terms:ir.actions.act_window,help:fleet_repair_management.action_saleorder
+msgid ""
+"Note that once a Quotation becomes a Sale Order, it will be moved\n"
+"                from the Quotations list to the Sales Order list."
+msgstr ""
+"Tenga en cuenta que una vez que una cotización se convierte en una orden de venta, se moverá\n"
+"         desde la lista de Cotizaciones a la lista de Pedidos de Ventas."
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__description
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Notes"
+msgstr "Notas"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_needaction_counter
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_needaction_counter
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__cycle
+msgid "Number of Cycles"
+msgstr "Número de Ciclos"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__hour
+msgid "Number of Hours"
+msgstr "Número de horas"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_has_error_counter
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_has_error_counter
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_has_error_counter
+msgid "Number of error"
+msgstr "Número de error"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__message_needaction_counter
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__message_needaction_counter
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__message_has_error_counter
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__message_has_error_counter
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__message_unread_counter
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__message_unread_counter
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leidos"
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,aceite_motor:0
+#: selection:fleet.diagnose,aciete_hidraulico:0
+#: selection:fleet.diagnose,afinador_mayor:0
+#: selection:fleet.diagnose,alineacion:0 selection:fleet.diagnose,alternador:0
+#: selection:fleet.diagnose,amortig_soporte_del:0
+#: selection:fleet.diagnose,amortig_soporte_tras:0
+#: selection:fleet.diagnose,balanceo:0
+#: selection:fleet.diagnose,balin_pta_flecha_del_ext:0
+#: selection:fleet.diagnose,balin_pta_flecha_del_int:0
+#: selection:fleet.diagnose,balin_pta_flecha_tras:0
+#: selection:fleet.diagnose,balineras_patente_der:0
+#: selection:fleet.diagnose,balineras_patente_izr:0
+#: selection:fleet.diagnose,balineras_patente_tras_der:0
+#: selection:fleet.diagnose,balineras_patente_tras_izq:0
+#: selection:fleet.diagnose,banda_tiempo:0
+#: selection:fleet.diagnose,barra_torsion:0 selection:fleet.diagnose,bateria:0
+#: selection:fleet.diagnose,bielas_suspension:0
+#: selection:fleet.diagnose,bomba:0 selection:fleet.diagnose,bombillos_frenos:0
+#: selection:fleet.diagnose,bombillos_frenos_tra:0
+#: selection:fleet.diagnose,brazos_cremallera:0
+#: selection:fleet.diagnose,bujes_barra_control:0
+#: selection:fleet.diagnose,bujes_barra_estabil:0
+#: selection:fleet.diagnose,bujes_columna_direcc:0
+#: selection:fleet.diagnose,bujes_tijera_sup_inf:0
+#: selection:fleet.diagnose,caja_bomba_hidraulica:0
+#: selection:fleet.diagnose,calentadores:0
+#: selection:fleet.diagnose,campanas_frenos:0
+#: selection:fleet.diagnose,campanas_frenos_tra:0
+#: selection:fleet.diagnose,chisperos:0 selection:fleet.diagnose,compresor:0
+#: selection:fleet.diagnose,correas:0 selection:fleet.diagnose,cremallera:0
+#: selection:fleet.diagnose,cruz_cardanca:0
+#: selection:fleet.diagnose,discos_frenos:0
+#: selection:fleet.diagnose,discos_frenos_tra:0
+#: selection:fleet.diagnose,empaque_tapa_valvulva:0
+#: selection:fleet.diagnose,engrase:0 selection:fleet.diagnose,esprayado:0
+#: selection:fleet.diagnose,evaporador:0 selection:fleet.diagnose,filtro_aire:0
+#: selection:fleet.diagnose,filtro_cabina:0
+#: selection:fleet.diagnose,filtro_comb:0 selection:fleet.diagnose,fricciones:0
+#: selection:fleet.diagnose,lavado_chasis:0
+#: selection:fleet.diagnose,lavado_motor:0
+#: selection:fleet.diagnose,limpieza_ajuste:0
+#: selection:fleet.diagnose,limpieza_ajuste_tra:0
+#: selection:fleet.diagnose,liquido_frenos:0
+#: selection:fleet.diagnose,liquido_limpia_parabrisas:0
+#: selection:fleet.diagnose,llanta_delantera_derecha:0
+#: selection:fleet.diagnose,llanta_delantera_izquierda:0
+#: selection:fleet.diagnose,llanta_trasera_derecha:0
+#: selection:fleet.diagnose,llanta_trasera_izquierda:0
+#: selection:fleet.diagnose,luces:0 selection:fleet.diagnose,motor_arranque:0
+#: selection:fleet.diagnose,mtto_general:0 selection:fleet.diagnose,pasteado:0
+#: selection:fleet.diagnose,pastillas_frenos:0
+#: selection:fleet.diagnose,perno_ajuste:0
+#: selection:fleet.diagnose,polv_punta_flecha_ext_der:0
+#: selection:fleet.diagnose,polv_punta_flecha_ext_izq:0
+#: selection:fleet.diagnose,polv_punta_flecha_int_der:0
+#: selection:fleet.diagnose,polv_punta_flecha_int_izq:0
+#: selection:fleet.diagnose,pulido_carroceria:0
+#: selection:fleet.diagnose,pulido_focos:0
+#: selection:fleet.diagnose,refrigerante:0
+#: selection:fleet.diagnose,regimen_carga:0 selection:fleet.diagnose,rotacion:0
+#: selection:fleet.diagnose,rotulas_inferiores:0
+#: selection:fleet.diagnose,rotulas_superiores:0
+#: selection:fleet.diagnose,terminales:0
+#: selection:fleet.diagnose,terminales_sat:0
+#: selection:fleet.diagnose,termostato:0 selection:fleet.diagnose,torre_bujes:0
+#: selection:fleet.diagnose,turbo:0
+msgid "OK"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.actions.act_window,help:fleet_repair_management.action_invoice_tree1
+msgid ""
+"Odoo's electronic invoicing allows to ease and fasten the\n"
+"                collection of customer payments. Your customer receives the\n"
+"                invoice by email and he can pay online and/or import it\n"
+"                in his own system."
+msgstr ""
+"La facturación electrónica de Odoo permite facilitar y asegurar la\n"
+"                 cobro de pagos a clientes. Su cliente recibe el\n"
+"                 factura por correo electrónico y él puede pagar en línea y / o importarlo\n"
+"                 en su propio sistema."
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,activity_state:0
+msgid "Overdue"
+msgstr "Plazo de Vencimiento"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__pasteado
+msgid "Pasteado"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__pastillas_frenos
+msgid "Pastillas de frenos"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Pause Work Order"
+msgstr "Pausar orden de trabajo"
+
+#. module: fleet_repair_management
+#: selection:fleet.workorder,state:0
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Pending"
+msgstr "Pendiente"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__perno_ajuste
+msgid "Perno ajuste"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__client_phone
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__client_phone
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__client_phone
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__phone
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Piezas"
+msgstr ""
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,activity_state:0
+msgid "Planned"
+msgstr "Planificado"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Planned Date"
+msgstr "Fecha planificada"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__polv_punta_flecha_ext_der
+msgid "Polv punta flecha Ext Der"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__polv_punta_flecha_ext_izq
+msgid "Polv punta flecha Ext Izq"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__polv_punta_flecha_int_der
+msgid "Polv punta flecha Int Der"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__polv_punta_flecha_int_izq
+msgid "Polv punta flecha Int Izq"
+msgstr ""
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,rating:0
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.car_repair_feedback_fleet
+msgid "Poor"
+msgstr "Pobre"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.custom_view_order_form
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: fleet_repair_management
+#: model:ir.actions.report,name:fleet_repair_management.print_support_request_car_fleet
+msgid "Print Car Repair Request"
+msgstr "Imprimir solicitud de reparación de automóviles"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Print Label"
+msgstr "Imprimir Etiqueta"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Print Receipt"
+msgstr "Imprimir Solicitud"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__priority
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__priority
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__priority
+msgid "Priority"
+msgstr "Prioridad"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__default_code
+msgid "Product Code"
+msgstr "Código de Producto"
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_sale_order_inherit
+msgid "Producto"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__product_ids
+msgid "Productos"
+msgstr ""
+
+#. module: fleet_repair_management
+#: selection:fleet.diagnose,aceite_motor:0
+#: selection:fleet.diagnose,aciete_hidraulico:0
+#: selection:fleet.diagnose,afinador_mayor:0
+#: selection:fleet.diagnose,alineacion:0 selection:fleet.diagnose,alternador:0
+#: selection:fleet.diagnose,amortig_soporte_del:0
+#: selection:fleet.diagnose,amortig_soporte_tras:0
+#: selection:fleet.diagnose,balanceo:0
+#: selection:fleet.diagnose,balin_pta_flecha_del_ext:0
+#: selection:fleet.diagnose,balin_pta_flecha_del_int:0
+#: selection:fleet.diagnose,balin_pta_flecha_tras:0
+#: selection:fleet.diagnose,balineras_patente_der:0
+#: selection:fleet.diagnose,balineras_patente_izr:0
+#: selection:fleet.diagnose,balineras_patente_tras_der:0
+#: selection:fleet.diagnose,balineras_patente_tras_izq:0
+#: selection:fleet.diagnose,banda_tiempo:0
+#: selection:fleet.diagnose,barra_torsion:0 selection:fleet.diagnose,bateria:0
+#: selection:fleet.diagnose,bielas_suspension:0
+#: selection:fleet.diagnose,bomba:0 selection:fleet.diagnose,bombillos_frenos:0
+#: selection:fleet.diagnose,bombillos_frenos_tra:0
+#: selection:fleet.diagnose,brazos_cremallera:0
+#: selection:fleet.diagnose,bujes_barra_control:0
+#: selection:fleet.diagnose,bujes_barra_estabil:0
+#: selection:fleet.diagnose,bujes_columna_direcc:0
+#: selection:fleet.diagnose,bujes_tijera_sup_inf:0
+#: selection:fleet.diagnose,caja_bomba_hidraulica:0
+#: selection:fleet.diagnose,calentadores:0
+#: selection:fleet.diagnose,campanas_frenos:0
+#: selection:fleet.diagnose,campanas_frenos_tra:0
+#: selection:fleet.diagnose,chisperos:0 selection:fleet.diagnose,compresor:0
+#: selection:fleet.diagnose,correas:0 selection:fleet.diagnose,cremallera:0
+#: selection:fleet.diagnose,cruz_cardanca:0
+#: selection:fleet.diagnose,discos_frenos:0
+#: selection:fleet.diagnose,discos_frenos_tra:0
+#: selection:fleet.diagnose,empaque_tapa_valvulva:0
+#: selection:fleet.diagnose,engrase:0 selection:fleet.diagnose,esprayado:0
+#: selection:fleet.diagnose,evaporador:0 selection:fleet.diagnose,filtro_aire:0
+#: selection:fleet.diagnose,filtro_cabina:0
+#: selection:fleet.diagnose,filtro_comb:0 selection:fleet.diagnose,fricciones:0
+#: selection:fleet.diagnose,lavado_chasis:0
+#: selection:fleet.diagnose,lavado_motor:0
+#: selection:fleet.diagnose,limpieza_ajuste:0
+#: selection:fleet.diagnose,limpieza_ajuste_tra:0
+#: selection:fleet.diagnose,liquido_frenos:0
+#: selection:fleet.diagnose,liquido_limpia_parabrisas:0
+#: selection:fleet.diagnose,llanta_delantera_derecha:0
+#: selection:fleet.diagnose,llanta_delantera_izquierda:0
+#: selection:fleet.diagnose,llanta_trasera_derecha:0
+#: selection:fleet.diagnose,llanta_trasera_izquierda:0
+#: selection:fleet.diagnose,luces:0 selection:fleet.diagnose,motor_arranque:0
+#: selection:fleet.diagnose,mtto_general:0 selection:fleet.diagnose,pasteado:0
+#: selection:fleet.diagnose,pastillas_frenos:0
+#: selection:fleet.diagnose,perno_ajuste:0
+#: selection:fleet.diagnose,polv_punta_flecha_ext_der:0
+#: selection:fleet.diagnose,polv_punta_flecha_ext_izq:0
+#: selection:fleet.diagnose,polv_punta_flecha_int_der:0
+#: selection:fleet.diagnose,polv_punta_flecha_int_izq:0
+#: selection:fleet.diagnose,pulido_carroceria:0
+#: selection:fleet.diagnose,pulido_focos:0
+#: selection:fleet.diagnose,refrigerante:0
+#: selection:fleet.diagnose,regimen_carga:0 selection:fleet.diagnose,rotacion:0
+#: selection:fleet.diagnose,rotulas_inferiores:0
+#: selection:fleet.diagnose,rotulas_superiores:0
+#: selection:fleet.diagnose,terminales:0
+#: selection:fleet.diagnose,terminales_sat:0
+#: selection:fleet.diagnose,termostato:0 selection:fleet.diagnose,torre_bujes:0
+#: selection:fleet.diagnose,turbo:0
+msgid "Próximo a cambio"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__pulido_carroceria
+msgid "Pulido de carrocería"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__pulido_focos
+msgid "Pulido de focos"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__quantity
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_sale_order_inherit
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,state:0 selection:fleet.repair.analysis,state:0
+msgid "Quotation Approved"
+msgstr "Cotización Aprobada"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,state:0 selection:fleet.repair.analysis,state:0
+msgid "Quotation Sent"
+msgstr "Cotización Enviada"
+
+#. module: fleet_repair_management
+#: model:ir.actions.act_window,name:fleet_repair_management.action_quotations
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__quotation_count
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__quotation_count
+#: model:ir.ui.menu,name:fleet_repair_management.menu_quotation_sub
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Quotations"
+msgstr "Presupuestos"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.car_repair_feedback_fleet
+msgid "Rating :"
+msgstr "Puntuación :"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Re Open"
+msgstr "Reabrir"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_request_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_diagnostic_result_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_receipt_template_view
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_workorder_template_view
+msgid "Receipt"
+msgstr "Recepción"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__service_rec_no
+msgid "Receipt No"
+msgstr "No Recepción"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,state:0 selection:fleet.repair.analysis,state:0
+msgid "Received"
+msgstr "Recibido"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__refrigerante
+msgid "Refrigerante"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.custom_view_order_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_repair_order_filter
+msgid "Repair Order"
+msgstr "Orden de Reparación"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__fleet_repair_count
+#: model:ir.model.fields,field_description:fleet_repair_management.field_sale_order__count_fleet_repair
+msgid "Repair Orders"
+msgstr "Ordenes de reparación"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_sale_order__workorder_id
+msgid "Repair Work Order"
+msgstr "Orden de Trabajo"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Repaired?"
+msgstr "Reparado?"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Resume"
+msgstr "Resumen"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Resume Work Order"
+msgstr "Resumen Orden de Trabajo"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Rodamiento"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__rotacion
+msgid "Rotación"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__rotulas_inferiores
+msgid "Rotulas inferiores"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__rotulas_superiores
+msgid "Rotulas superiores"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__regimen_carga
+msgid "Régimen de carga "
+msgstr ""
+
+#. module: fleet_repair_management
+#: code:addons/fleet_repair_management/models/fleet_diagnose.py:389
+#: code:addons/fleet_repair_management/models/fleet_diagnose.py:407
+#: code:addons/fleet_repair_management/models/fleet_repair.py:197
+#: code:addons/fleet_repair_management/models/fleet_repair.py:215
+#: code:addons/fleet_repair_management/models/fleet_workorder.py:135
+#, python-format
+msgid "Sale"
+msgstr "Venta"
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_sale_order
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__saleorder_count
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__saleorder_count
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__saleorder_count
+msgid "Sale Order"
+msgstr "Pedido de venta"
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Ventas. Anticipo pago factura"
+
+#. module: fleet_repair_management
+#: model:ir.actions.act_window,name:fleet_repair_management.action_saleorder
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__sale_order_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__sale_order_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__sale_order_id
+#: model:ir.ui.menu,name:fleet_repair_management.menu_sale_order_sub
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Sales Orders"
+msgstr "Pedidos de ventas"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__date_planned
+msgid "Scheduled Date"
+msgstr "Fecha prevista"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_analysis_search
+msgid "Search Client"
+msgstr "Buscar cliente"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_repair_order_filter
+msgid "Search Repair Order"
+msgstr "Buscar orden de reparación"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_filter
+msgid "Search fleet Diagnoses"
+msgstr "Buscar diagnostico de flota"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_filter
+msgid "Search fleet WorkOrder"
+msgstr "Buscar orden de trabajo. "
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__sequence
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_analysis__sequence
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__service_detail
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__service_detail
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_repair_fleet_line_form
+msgid "Service Details"
+msgstr "Detalles del servicios"
+
+#. module: fleet_repair_management
+#: model:res.groups,name:fleet_repair_management.group_fleet_repair_service_manager
+msgid "Service Manager"
+msgstr "Asesor de Servicio"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__service_product_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__service_product_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__service_product_id
+msgid "Service Product"
+msgstr "Producto de Servicio"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__service_product_price
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__service_product_price
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__service_product_price
+msgid "Service Product Price"
+msgstr "Precio del Producto de Servicio"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__spare_part_ids_y
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Services Needed"
+msgstr "Servicios  Necesarios"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__product_ids_service
+msgid "Servicios"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Set Draft"
+msgstr "Cambiar a borrador"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+msgid "Set To Close"
+msgstr "Cambiar a cerrado"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Set to Draft"
+msgstr "Cambiar a borrador"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Sistema eléctrico"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__fleet_repair_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__source_line_id
+msgid "Source"
+msgstr "Fuente"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__spare_part_ids
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_repair_fleet_line_form
+msgid "Spare Parts"
+msgstr "Piezas de repuestos"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__spare_part_ids
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__spare_part_ids_x
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__spare_part_ids
+msgid "Spare Parts Needed"
+msgstr "Piezas de repuestos necesarias"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Start"
+msgstr "Iniciar"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__date_start
+msgid "Start Date"
+msgstr "Fecha de inicio"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "Start Working"
+msgstr "Empezar a trabajar"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__state
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__state
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_analysis__state
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__state
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__state
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_analysis_search
+msgid "Status"
+msgstr "Estado"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Estado basado en actividades\n"
+"Vencida: la fecha tope ya ha pasado\n"
+"Hoy: La fecha tope es hoy\n"
+"Planificada: futuras actividades."
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__name
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__name
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_tree
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_tree
+msgid "Subject"
+msgstr "Asunto"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.car_repair_feedback_fleet
+msgid "Submit"
+msgstr "Enviar"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+msgid "Suspensión"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_sale_order_inherit
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose_assignto_technician__user_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__user_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__user_id
+#: model:res.groups,name:fleet_repair_management.group_fleet_repair_technician
+msgid "Technician"
+msgstr "Técnico"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__user_id
+msgid "Technicians"
+msgstr "Técnicos"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__terminales
+msgid "Terminales"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__terminales_sat
+msgid "Terminales Sat"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__termostato
+msgid "Termostato"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.actions.act_window,help:fleet_repair_management.action_invoice_tree1
+msgid ""
+"The discussions with your customer are automatically displayed at\n"
+"                the bottom of each invoice."
+msgstr ""
+"Las conversaciones con su cliente se muestran automáticamente en\n"
+"                 La parte inferior de cada factura."
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,activity_state:0
+msgid "Today"
+msgstr "Hoy"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__torre_bujes
+msgid "Torre y/o bujes"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_sale_order_inherit
+msgid "Total Price"
+msgstr "Precio total"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__llanta_trasera_derecha
+msgid "Trasera  derecha"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__llanta_trasera_izquierda
+msgid "Trasera  izquierda"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__turbo
+msgid "Turbo"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__guarantee
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__guarantee
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.support_report_car_fleet
+msgid "Under Guarantee?"
+msgstr "Bajo garantía"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__vin_sn
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__vin_sn
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair_line__vin_sn
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__vin_sn
+msgid "Unique number written on the vehicle motor (VIN/SN number)"
+msgstr "Nº único escrito en el motor del vehículo (nº de identificación del vehículo o nº de serie)"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__price_unit
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.report_sale_order_inherit
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__uom_id
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_unread
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_unread
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes por leer"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__message_unread_counter
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__message_unread_counter
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes sin leer"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,rating:0
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.car_repair_feedback_fleet
+msgid "Very Good"
+msgstr "Muy bien"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.custom_view_order_form
+msgid "View Work Order"
+msgstr "Visualizar orden de Trabajo"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__website_message_ids
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__website_message_ids
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_diagnose__website_message_ids
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_repair__website_message_ids
+#: model:ir.model.fields,help:fleet_repair_management.field_fleet_workorder__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,state:0 selection:fleet.repair.analysis,state:0
+msgid "Work Completed"
+msgstr "Trabajo Completado"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__name
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.custom_view_order_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_tree
+msgid "Work Order"
+msgstr "Orden de trabajo"
+
+#. module: fleet_repair_management
+#: model:ir.actions.act_window,name:fleet_repair_management.action_fleet_workorder_tree_view
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__workorder_count
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__workorder_count
+#: model:ir.model.fields,field_description:fleet_repair_management.field_sale_order__workorder_count
+#: model:ir.ui.menu,name:fleet_repair_management.menu_fleet_workorder_submenu
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_tree
+msgid "Work Orders"
+msgstr "Órdenes de trabajo"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,state:0 selection:fleet.repair.analysis,state:0
+msgid "Work in Progress"
+msgstr "Trabajo en proceso"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_filter
+msgid "WorkOrder"
+msgstr "Orden de Trabajo"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__delay
+msgid "Working Hours"
+msgstr "Horas laborales"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__is_workorder_created
+#: model:ir.model.fields,field_description:fleet_repair_management.field_sale_order__is_workorder_created
+msgid "Workorder Created"
+msgstr "Orden de trabajo Creadas"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,guarantee:0 selection:fleet.repair.line,guarantee:0
+msgid "Yes"
+msgstr "Si"
+
+#. module: fleet_repair_management
+#: code:addons/fleet_repair_management/models/fleet_repair.py:427
+#, python-format
+msgid "You cannot print report without fleet details"
+msgstr "Usted no puede imprimir reportes sin detalles de la flota"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.car_repair_feedback_fleet
+msgid "Your Comment....."
+msgstr "Sus comentarios….."
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.successful_feedback_car_fleet
+msgid ""
+"Your Feedback have been sent successfully.<br/><br/>\n"
+"                    Thank you,<br/>\n"
+"                    Repair Team<br/>"
+msgstr ""
+"Sus comentarios se han enviado correctamente. <br/> <br/>\n"
+"                     Gracias <br/>\n"
+"                     Equipo de reparación <br/>"
+
+#. module: fleet_repair_management
+#: model_terms:ir.actions.act_window,help:fleet_repair_management.action_quotations
+#: model_terms:ir.actions.act_window,help:fleet_repair_management.action_saleorder
+msgid ""
+"Your next actions should flow efficiently: confirm the Quotation\n"
+"                to a Sale Order, then create the Invoice and collect the Payment."
+msgstr ""
+"Sus próximas acciones deben fluir eficientemente: confirme la cita\n"
+"                 a una orden de venta, luego cree la factura y cobre el pago."
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__confirm_sale_order
+msgid "confirm sale order"
+msgstr "confirmar orden de venta"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__fleet_repair_id
+msgid "fleet"
+msgstr "flete"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__diagnose_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__diagnose_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__diagnose_id
+msgid "fleet Diagnose"
+msgstr "Diagnosticar flota"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__diagnose_id_y
+msgid "fleet Diagnoses"
+msgstr "diagnósticos de flotas"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__diagnose_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_sale_order__diagnose_id
+msgid "fleet Diagnosis"
+msgstr "Diagnostico de flota"
+
+#. module: fleet_repair_management
+#: model:ir.actions.report,name:fleet_repair_management.fleet_diagnostic_result_report_id
+msgid "fleet Diagnostic Result"
+msgstr "Resultados del Diagnóstico "
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_workorder_form
+msgid "fleet Info"
+msgstr "Información de Flota"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_repair_fleet_line_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_repair_fleet_line_tree
+msgid "fleet Lines"
+msgstr "Líneas de Flota"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__fleet_repair_id
+msgid "fleet Repair"
+msgstr "Reparación de flota"
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_analysis_graph
+msgid "fleet Repair Analysis"
+msgstr "Análisis de Reparación de flota"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__workorder_id
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair_line__workorder_id
+msgid "fleet Work Order"
+msgstr "Orden de Trabajo de flota"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_spare_part_line__workorder_id
+msgid "fleet Workorder"
+msgstr "Orden de Trabajo de flota"
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_fleet_diagnose
+msgid "fleet.diagnose"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_fleet_diagnose_assignto_technician
+msgid "fleet.diagnose.assignto.technician"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_fleet_repair
+msgid "fleet.repair"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_fleet_repair_analysis
+msgid "fleet.repair.analysis"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_fleet_repair_assignto_headtech
+msgid "fleet.repair.assignto.headtech"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_fleet_repair_line
+msgid "fleet.repair.line"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_fleet_workorder
+msgid "fleet.workorder"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.fleet_repair_analysis_tree_view
+msgid "fleets"
+msgstr "Flotas"
+
+#. module: fleet_repair_management
+#: code:addons/fleet_repair_management/controllers/main.py:31
+#, python-format
+msgid "has send this feedback rating is %s and comment is %s"
+msgstr "ha enviado esta calificación de comentarios es% sy el comentario es% s"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_diagnose__is_invoiced
+msgid "invoice Created"
+msgstr "Factura creada"
+
+#. module: fleet_repair_management
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_repair__confirm_sale_order
+#: model:ir.model.fields,field_description:fleet_repair_management.field_fleet_workorder__confirm_sale_order
+msgid "is confirm"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_diagnose_assign_to_tech_form
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.view_fleet_repair_assign_to_head_tech_form
+msgid "or"
+msgstr "o"
+
+#. module: fleet_repair_management
+#: selection:fleet.repair,guarantee_type:0
+#: selection:fleet.repair.line,guarantee_type:0
+msgid "paid"
+msgstr "pagar"
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_service_type
+msgid "service.type"
+msgstr ""
+
+#. module: fleet_repair_management
+#: model_terms:ir.ui.view,arch_db:fleet_repair_management.successful_feedback_car_fleet
+msgid "show ticket"
+msgstr "Mostrar tiquete"
+
+#. module: fleet_repair_management
+#: model:ir.model,name:fleet_repair_management.model_spare_part_line
+msgid "spare.part.line"
+msgstr ""
